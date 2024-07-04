@@ -8,6 +8,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.get('/', function (req, res) {
+  res.send("Welcome to Idea Usher Backend Task");
+})
 app.use('/api/posts', postRoutes); // Mount post routes
 
 const PORT = process.env.PORT || 3000;
