@@ -11,7 +11,7 @@ This API provides endpoints to manage posts, including retrieving all posts and 
 1. Get All Posts : /api/posts
 Retrieves a list of blog posts with optional searching, filtering, sorting, and pagination.
 
-URL: https://idea-usher-backend-task.onrender.com/api/posts
+ URL: https://idea-usher-backend-task.onrender.com/api/posts
 Method: GET
 Query Parameters:
  - page (optional): Page number for pagination (default: 1)
@@ -35,7 +35,7 @@ Error Response: 400 Bad Request, 500 Internal Server Error
 2. Create Post : /api/posts/create
 Creates a new blog post.
 
-URL: https://idea-usher-backend-task.onrender.com/api/posts/create
+ URL: https://idea-usher-backend-task.onrender.com/api/posts/create
 Method: POST
 Body Parameters:
  - title (required): Post title
