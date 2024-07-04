@@ -1,74 +1,62 @@
 # idea-usher-backend-task
 
 #API Documentation
-1. getAllPosts
-Endpoint: GET /api/posts
+This API provides endpoints to manage posts, including retrieving all posts and creating new posts.
 
-Description: Retrieves a list of posts based on specified query parameters.
+#Base URL : https://idea-usher-backend-task.onrender.com/
 
+ 
+#Endpoints
+
+1. Get All Posts : /api/posts
+Retrieves a list of blog posts with optional searching, filtering, sorting, and pagination.
+
+URL: https://idea-usher-backend-task.onrender.com/api/posts
+Method: GET
 Query Parameters:
+ - page (optional): Page number for pagination (default: 1)
+ - limit (optional): Number of posts per page (default: 10)
+ - sort (optional): Sort order for posts ('asc' or 'desc', default: 'desc')
+ - keyword (optional): Search keyword for title and description
+ - tag (optional): Filter posts by tag name
 
-page: Page number for pagination (default: 1).
-limit: Number of posts per page (default: 10).
-sort: Sorting order (asc for ascending, desc for descending).
-keyword: Search term to match in post title or description.
-tag: Filters posts by tag name.
 Response:
-
-json
-Copy code
-{
-  "posts": [Array of Post Objects],
-  "currentPage": Number,
-  "totalPages": Number,
-  "totalPosts": Number,
-  "limit": Number
-}
-Example Request:
-
-bash
-Copy code
-GET /api/posts?page=1&limit=10&sort=desc&keyword=example&tag=tech
-2. createPost
-Endpoint: POST /api/posts
-
-Description: Creates a new post with provided title, description, tags, and optional image.
-
-Request Body:
-
-json
-Copy code
-{
-  "title": "String",
-  "desc": "String",
-  "tags": ["Array of String"],
-  "image": "Optional: URL of Image"
-}
-Response:
-
-json
-Copy code
-{
-  "message": "post successfully created",
-  "post": {
-    "title": "String",
-    "desc": "String",
-    "tags": ["Array of Tag IDs"],
-    "image": "Base64 Encoded Image"
+  Success Response: 200 OK
+  jsonCopy{
+    "posts": [...],
+    "currentPage": 1,
+    "totalPages": 3,
+    "totalPosts": 25,
+    "limit": 10
   }
-}
-Example Request:
 
-json
-Copy code
-POST /api/posts
-{
-  "title": "Sample Title",
-  "desc": "Sample Description",
-  "tags": ["Tech", "Development"],
-  "image": "https://example.com/sample-image.jpg"
-}
-Notes:
-Error Handling: Proper error messages are returned for invalid requests or server errors.
-Tag Management: Tags are managed by checking existing tags or creating new ones if not found.
-Image Conversion: Optional image URL is converted to base64 format for storage.
+Error Response: 400 Bad Request, 500 Internal Server Error
+
+2. Create Post : /api/posts/create
+Creates a new blog post.
+
+URL: https://idea-usher-backend-task.onrender.com/api/posts/create
+Method: POST
+Body Parameters:
+ - title (required): Post title
+ - desc (required): Post description
+ - tags (optional): Array of tag names
+ - image (optional): URL of the post image
+
+Response:
+  Success Response: 201 Created
+  jsonCopy{
+    "message": "post successfully created",
+    "post": {...}
+  }
+
+Error Response: 500 Internal Server Error
+
+Additional Information:
+ - The API uses MongoDB for data storage.
+ - Posts are associated with tags, which are automatically created if they don't exist.
+ - Images are converted to base64 format before storing.
+ - Sorting is done based on the createdAt field.
+ - The API implements proper error handling and parameter validation.
+
+Thank You Idea Usher for giving me this task.
