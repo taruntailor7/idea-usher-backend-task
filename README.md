@@ -1,12 +1,9 @@
 # idea-usher-backend-task
 
 #API Documentation
-This API provides endpoints to manage posts, including retrieving all posts and creating new posts.
+#This API provides endpoints to manage posts, including retrieving all posts and creating new posts.
 
 #Base URL : https://idea-usher-backend-task.onrender.com/
-
- 
-#Endpoints
 
 #1. Get All Posts : /api/posts
 Retrieves a list of blog posts with optional searching, filtering, sorting, and pagination.
